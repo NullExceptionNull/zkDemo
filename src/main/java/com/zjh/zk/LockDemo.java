@@ -10,14 +10,14 @@ import java.util.concurrent.TimeUnit;
 public class LockDemo {
 
 
-    private static final String host = "192.168.0.103:2181";
+    private static final String host = "192.168.2.48:2181";
 
 
     public static void main(String[] args) throws Exception {
 
         CuratorFramework curatorFramework = CuratorFrameworkFactory.builder()
                 .connectString(host)
-                .sessionTimeoutMs(5000)
+                .sessionTimeoutMs(50000000)
                 .retryPolicy(new ExponentialBackoffRetry(1000, 3))
                 .build();
 
@@ -45,7 +45,7 @@ public class LockDemo {
 
 
                 try {
-                    TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.SECONDS.sleep(30);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
